@@ -15,9 +15,20 @@ the support copy moved to `support.html` unchanged apart from two corrections: t
 is called **Restore Subscription**, not "Restore Purchases" (walked on a running build, recorded in
 `AppStoreAssets/listing.md`), and three em dashes came out.
 
-**The Support URL in App Store Connect has to be repointed at `support.html`.** Apple's guideline
-1.5 wants a support page at that URL, and the root is now marketing. It is a metadata-only field,
-so it needs no new build, but until it changes the listing sends people to the wrong page.
+**The Support URL in App Store Connect points at the root, and it cannot be changed until the
+next version.** It is not an App Information field. `supportUrl` lives on
+`appStoreVersionLocalizations`, the same object as What's New, so it is locked while the version
+is `READY_FOR_SALE` and only unlocks on a version in an editable state. `Scripts/asc.py` shows
+this: it refuses to patch that object unless it finds an editable version. Promotional text is
+the only listing field that can be changed in place.
+
+So do not plan a metadata-only trip to App Store Connect for this. **Repoint it at
+`support.html` as part of the next version you ship**, where it costs nothing.
+
+In the meantime the root has to do the support work, and it does: a Support link in the header
+nav, a Support link in the footer, and `mattsappdevelopment@gmail.com` on the page twice. Anyone
+Apple sends there reaches the FAQ in one tap. Guideline 1.5 is checked at submission, which is
+the same moment the field unlocks, so the two never conflict.
 
 ## Where the design comes from
 
