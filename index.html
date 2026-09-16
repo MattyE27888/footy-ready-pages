@@ -16,179 +16,7 @@
 <meta property="og:url" content="https://mattye27888.github.io/footy-ready-pages/">
 <meta name="twitter:card" content="summary_large_image">
 
-<style>
-/* Colour and type are Marketing/BRAND-KIT.md sections 2 and 3, which come in turn
-   from the app's own Theme.swift. Change the app first, the kit second and this
-   page third, never the other way around. One accent per section: olive carries
-   chartreuse, bone carries field green, and the two greens never meet. */
-@font-face {
-  font-family: "Inter Tight";
-  src: url("fonts/InterTight.woff2") format("woff2-variations");
-  font-weight: 100 900;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter Var";
-  src: url("fonts/Inter.woff2") format("woff2-variations");
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-:root {
-  --olive: #15200A;
-  --chartreuse: #C7F04F;
-  --bone: #F5F4EE;
-  --ink: #1C1F1A;
-  --field: #527D0D;
-  --tint: #D9F09E;
-  --hairline: #E0E0E0;
-  --ink-soft: #4A4F46;
-  --bone-soft: #C5CCBB;
-  --head: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --body: "Inter Var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: var(--bone);
-  color: var(--ink);
-  font-family: var(--body);
-  font-optical-sizing: auto;
-  font-size: 18px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
-
-section { padding: 64px 0; }
-.olive { background: var(--olive); color: var(--bone); }
-.bone { background: var(--bone); color: var(--ink); }
-
-h1, h2, h3 {
-  font-family: var(--head);
-  font-weight: 900;
-  line-height: 0.95;
-  margin: 0 0 18px;
-  text-transform: uppercase;
-}
-h1 { font-size: clamp(40px, 8vw, 78px); }
-/* The brand sits inside the H1 so the page's main heading names the product as
-   well as the promise, without a second headline competing in the hero. */
-.eyebrow {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  line-height: 1;
-  color: var(--bone-soft);
-  margin-bottom: 20px;
-}
-h2 { font-size: clamp(32px, 6vw, 58px); }
-h3 { font-size: 20px; line-height: 1.15; }
-.olive h1, .olive h2, .olive h3 { color: var(--chartreuse); }
-.bone h2, .bone h3 { color: var(--field); }
-
-p { margin: 0 0 16px; }
-.lede { font-size: clamp(18px, 2.1vw, 21px); max-width: 32em; }
-.note { font-size: 15px; line-height: 1.55; max-width: 38em; }
-.olive .note { color: var(--bone-soft); }
-.bone .note { color: var(--ink-soft); }
-
-a { color: inherit; }
-.olive a { color: var(--chartreuse); }
-.bone a { color: var(--field); }
-
-.bar {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; padding: 18px 0 6px;
-}
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.brand img { width: 40px; height: 40px; border-radius: 9px; display: block; }
-.brand span { font-family: var(--head); font-weight: 800; font-size: 20px; color: var(--bone); white-space: nowrap; }
-.bar nav { font-size: 16px; white-space: nowrap; }
-.bar nav a { margin-left: 18px; }
-
-.hero { padding-top: 28px; padding-bottom: 0; }
-.hero-grid { display: grid; gap: 32px; align-items: end; grid-template-columns: 1fr; }
-.hero-shot { margin: 0; }
-.hero-shot img { width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto; }
-
-.cta {
-  display: inline-block;
-  background: var(--chartreuse);
-  font-family: var(--head);
-  font-weight: 800;
-  font-size: 19px;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 15px 26px;
-  border-radius: 10px;
-  margin: 6px 0 14px;
-}
-.olive .cta { background: var(--chartreuse); color: var(--olive); }
-.bone .cta { background: var(--field); color: var(--bone); }
-
-.codes { padding: 36px 0; border-bottom: 1px solid var(--hairline); }
-.codes ul {
-  list-style: none; margin: 0 0 14px; padding: 0;
-  display: flex; flex-wrap: wrap; gap: 8px 28px;
-  font-family: var(--head); font-weight: 800; text-transform: uppercase;
-  font-size: clamp(18px, 2.6vw, 26px); color: var(--field);
-}
-
-.features { display: grid; gap: 34px; grid-template-columns: 1fr; margin-top: 44px; }
-.features p { margin: 0; }
-.features .rule { width: 44px; height: 4px; background: var(--tint); margin-bottom: 14px; }
-.features .lead .rule { width: 76px; height: 6px; }
-.features .lead h3 { font-size: clamp(23px, 3vw, 32px); }
-.features .lead p { font-size: 19px; max-width: 34em; }
-.features .minor h3 { font-size: 18px; }
-.features .minor p { font-size: 16px; line-height: 1.55; }
-.bone .features .minor p { color: var(--ink-soft); }
-
-.split { display: grid; gap: 36px; align-items: center; grid-template-columns: 1fr; }
-.split .shot { margin: 0; }
-/* The device crops carry their own olive ground, so on a bone section the figure
-   becomes a deliberate olive panel rather than a stray dark rectangle. */
-.bone .split .shot {
-  background: var(--olive);
-  border-radius: 18px;
-  overflow: hidden;
-  padding: 30px 0 0;
-}
-.split .shot img { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; }
-
-.centre { text-align: center; }
-.centre .lede { margin-left: auto; margin-right: auto; }
-
-footer { background: var(--olive); color: var(--bone-soft); padding: 44px 0 52px; font-size: 15px; }
-footer a { color: var(--chartreuse); }
-footer .links { margin-bottom: 22px; font-size: 16px; }
-footer .links a { margin-right: 20px; display: inline-block; }
-footer p { max-width: 48em; }
-
-@media (max-width: 420px) {
-  .brand img { width: 34px; height: 34px; }
-  .brand span { font-size: 18px; }
-  .bar nav { font-size: 15px; }
-  .bar nav a { margin-left: 14px; }
-}
-
-@media (min-width: 760px) {
-  section { padding: 88px 0; }
-  .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 52px; }
-  .hero-shot img { max-width: 330px; }
-  .hero-copy { padding-bottom: 56px; }
-  .features { grid-template-columns: 1fr 1fr; gap: 46px 48px; }
-  .features .lead { grid-column: 1 / -1; }
-  .split { grid-template-columns: 0.85fr 1.15fr; gap: 56px; }
-  .split.reverse .shot { order: 2; }
-}
-</style>
+<link rel="stylesheet" href="site.css">
 
 <script type="application/ld+json">
 {
@@ -245,6 +73,7 @@ footer p { max-width: 48em; }
         <span>Footy Ready</span>
       </a>
       <nav>
+        <a href="how-it-works.html">How it works</a>
         <a href="#coaches">Coaches</a>
         <a href="support.html">Support</a>
       </nav>
@@ -366,6 +195,7 @@ footer p { max-width: 48em; }
 <footer>
   <div class="wrap">
     <p class="links">
+      <a href="how-it-works.html">How it works</a>
       <a href="support.html">Support</a>
       <a href="privacy.html">Privacy</a>
       <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
