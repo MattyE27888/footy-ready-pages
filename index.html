@@ -1,51 +1,373 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Footy Ready Support</title>
+<title>Footy Ready: Pre-Season Training Plan App</title>
+<meta name="description" content="Off-season, pre-season and in-season training built around your season dates, your body and the gear you actually have. For amateur Aussie rules, rugby league, rugby union and soccer players.">
+<link rel="canonical" href="https://mattye27888.github.io/footy-ready-pages/">
+<meta name="apple-itunes-app" content="app-id=6807821197">
+<link rel="icon" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Footy Ready: Pre-Season Training Plan App">
+<meta property="og:description" content="Training built around your season dates, your body and the gear you actually have. Aussie rules, rugby league, rugby union and soccer.">
+<meta property="og:image" content="https://mattye27888.github.io/footy-ready-pages/img/og.png">
+<meta property="og:url" content="https://mattye27888.github.io/footy-ready-pages/">
+<meta name="twitter:card" content="summary_large_image">
+
 <style>
-  :root { --bg: #fff; --fg: #1c1c1e; --link: #0066cc; --muted: #666; --muted2: #888; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg: #1c1c1e; --fg: #f2f2f7; --link: #4da3ff; --muted: #9a9a9e; --muted2: #8a8a8e; }
-  }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 640px; margin: 0 auto; padding: 32px 20px 64px; line-height: 1.55; background: var(--bg); color: var(--fg); }
-  h1 { font-size: 1.6em; margin-bottom: 0.2em; }
-  h2 { font-size: 1.15em; margin-top: 1.6em; }
-  a { color: var(--link); }
-  .tagline { color: var(--muted); margin-top: 0; }
-  footer { margin-top: 3em; font-size: 0.85em; color: var(--muted2); }
+/* Colour and type are Marketing/BRAND-KIT.md sections 2 and 3, which come in turn
+   from the app's own Theme.swift. Change the app first, the kit second and this
+   page third, never the other way around. One accent per section: olive carries
+   chartreuse, bone carries field green, and the two greens never meet. */
+@font-face {
+  font-family: "Inter Tight";
+  src: url("fonts/InterTight.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter Var";
+  src: url("fonts/Inter.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --olive: #15200A;
+  --chartreuse: #C7F04F;
+  --bone: #F5F4EE;
+  --ink: #1C1F1A;
+  --field: #527D0D;
+  --tint: #D9F09E;
+  --hairline: #E0E0E0;
+  --ink-soft: #4A4F46;
+  --bone-soft: #C5CCBB;
+  --head: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --body: "Inter Var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--body);
+  font-optical-sizing: auto;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+section { padding: 64px 0; }
+.olive { background: var(--olive); color: var(--bone); }
+.bone { background: var(--bone); color: var(--ink); }
+
+h1, h2, h3 {
+  font-family: var(--head);
+  font-weight: 900;
+  line-height: 0.95;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+h1 { font-size: clamp(38px, 7vw, 64px); }
+/* The brand sits inside the H1 so the page's main heading names the product as
+   well as the promise, without a second headline competing in the hero. */
+.eyebrow {
+  display: block;
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  color: var(--bone);
+  margin-bottom: 14px;
+}
+h2 { font-size: clamp(28px, 4.4vw, 40px); }
+h3 { font-size: 20px; line-height: 1.15; }
+.olive h1, .olive h2, .olive h3 { color: var(--chartreuse); }
+.bone h2, .bone h3 { color: var(--field); }
+
+p { margin: 0 0 16px; }
+.lede { font-size: clamp(18px, 2.1vw, 21px); max-width: 32em; }
+.note { font-size: 15px; line-height: 1.55; max-width: 38em; }
+.olive .note { color: var(--bone-soft); }
+.bone .note { color: var(--ink-soft); }
+
+a { color: inherit; }
+.olive a { color: var(--chartreuse); }
+.bone a { color: var(--field); }
+
+.bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 18px 0 6px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand img { width: 40px; height: 40px; border-radius: 9px; display: block; }
+.brand span { font-family: var(--head); font-weight: 800; font-size: 20px; color: var(--bone); white-space: nowrap; }
+.bar nav { font-size: 16px; white-space: nowrap; }
+.bar nav a { margin-left: 18px; }
+
+.hero { padding-top: 28px; padding-bottom: 0; }
+.hero-grid { display: grid; gap: 32px; align-items: end; grid-template-columns: 1fr; }
+.hero-shot { margin: 0; }
+.hero-shot img { width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto; }
+
+.cta {
+  display: inline-block;
+  background: var(--chartreuse);
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 19px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 26px;
+  border-radius: 10px;
+  margin: 6px 0 14px;
+}
+.olive .cta { background: var(--chartreuse); color: var(--olive); }
+.bone .cta { background: var(--field); color: var(--bone); }
+
+.codes { padding: 36px 0; border-bottom: 1px solid var(--hairline); }
+.codes ul {
+  list-style: none; margin: 0 0 14px; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 8px 28px;
+  font-family: var(--head); font-weight: 800; text-transform: uppercase;
+  font-size: clamp(18px, 2.6vw, 26px); color: var(--field);
+}
+
+.features { display: grid; gap: 34px; grid-template-columns: 1fr; margin-top: 44px; }
+.features p { margin: 0; }
+.features .rule { width: 44px; height: 4px; background: var(--tint); margin-bottom: 14px; }
+
+.split { display: grid; gap: 36px; align-items: center; grid-template-columns: 1fr; }
+.split .shot { margin: 0; }
+/* The device crops carry their own olive ground, so on a bone section the figure
+   becomes a deliberate olive panel rather than a stray dark rectangle. */
+.bone .split .shot {
+  background: var(--olive);
+  border-radius: 18px;
+  overflow: hidden;
+  padding: 30px 0 0;
+}
+.split .shot img { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; }
+
+.centre { text-align: center; }
+.centre .lede { margin-left: auto; margin-right: auto; }
+
+footer { background: var(--olive); color: var(--bone-soft); padding: 44px 0 52px; font-size: 15px; }
+footer a { color: var(--chartreuse); }
+footer .links { margin-bottom: 22px; font-size: 16px; }
+footer .links a { margin-right: 20px; display: inline-block; }
+footer p { max-width: 48em; }
+
+@media (max-width: 420px) {
+  .brand img { width: 34px; height: 34px; }
+  .brand span { font-size: 18px; }
+  .bar nav { font-size: 15px; }
+  .bar nav a { margin-left: 14px; }
+}
+
+@media (min-width: 760px) {
+  section { padding: 88px 0; }
+  .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 52px; }
+  .hero-shot img { max-width: 330px; }
+  .hero-copy { padding-bottom: 56px; }
+  .features { grid-template-columns: 1fr 1fr; gap: 40px 48px; }
+  .split { grid-template-columns: 0.85fr 1.15fr; gap: 56px; }
+  .split.reverse .shot { order: 2; }
+}
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mattye27888.github.io/footy-ready-pages/#org",
+      "name": "Footy Ready",
+      "url": "https://mattye27888.github.io/footy-ready-pages/",
+      "logo": "https://mattye27888.github.io/footy-ready-pages/img/icon.png",
+      "email": "mattsappdevelopment@gmail.com",
+      "sameAs": [
+        "https://apps.apple.com/au/app/footy-ready-training-plan/id6807821197",
+        "https://www.instagram.com/footyreadyapp/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mattye27888.github.io/footy-ready-pages/#site",
+      "url": "https://mattye27888.github.io/footy-ready-pages/",
+      "name": "Footy Ready",
+      "publisher": { "@id": "https://mattye27888.github.io/footy-ready-pages/#org" },
+      "inLanguage": "en-AU"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Footy Ready: Training Plan",
+      "applicationCategory": "HealthAndFitnessApplication",
+      "operatingSystem": "iOS",
+      "url": "https://apps.apple.com/au/app/footy-ready-training-plan/id6807821197",
+      "installUrl": "https://apps.apple.com/au/app/footy-ready-training-plan/id6807821197",
+      "publisher": { "@id": "https://mattye27888.github.io/footy-ready-pages/#org" },
+      "inLanguage": "en-AU",
+      "description": "Off-season, pre-season and in-season training built around your season dates, your body and the gear you actually have, for amateur Aussie rules, rugby league, rugby union and soccer players.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "AUD",
+        "description": "Free to download. Building your plan and your first session are free; every session after that is part of a subscription."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
-<h1>Footy Ready Support</h1>
-<p class="tagline">Off-season training built around footy, not a gym plan.</p>
+<header class="olive">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="./">
+        <img src="img/icon.png" alt="">
+        <span>Footy Ready</span>
+      </a>
+      <nav>
+        <a href="#coaches">Coaches</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </div>
+  </div>
+</header>
 
-<p>Need help with Footy Ready? Email <a href="mailto:mattsappdevelopment@gmail.com">mattsappdevelopment@gmail.com</a> and you'll get a reply directly from the developer — this is a one-person app, not a support team.</p>
+<section class="olive hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1><span class="eyebrow">Footy Ready</span>The pre-season that knows you</h1>
+      <p class="lede">Off-season, pre-season and in-season training built around your season dates, your body and the gear you actually have. Aussie rules, rugby league, rugby union and soccer, all in the one app.</p>
+      <p><a class="cta" href="https://apps.apple.com/au/app/footy-ready-training-plan/id6807821197?ct=website">Get it on the App Store</a></p>
+      <p class="note">Building your whole plan is free, and your first real session is free to play. iPhone only. No account and no sign-in.</p>
+    </div>
+    <figure class="hero-shot">
+      <img src="img/shot-why.png" alt="The Today screen in Footy Ready, showing a session pulled back after a below-par check-in, with the reason written on the session.">
+    </figure>
+  </div>
+</section>
 
-<h2>Common questions</h2>
+<div class="bone codes">
+  <div class="wrap">
+    <ul>
+      <li>Aussie rules</li>
+      <li>Rugby league</li>
+      <li>Rugby union</li>
+      <li>Soccer</li>
+    </ul>
+    <p class="note">The strength, running and soft-tissue work that every football code shares. It isn't contact or tackle conditioning, and it doesn't pretend to be.</p>
+  </div>
+</div>
 
-<p><strong>Why did my session change from what was planned?</strong><br>
-Your daily readiness check-in (sleep, energy, soreness, stress, mood) can pull a session back or swap it for a recovery day. The reason is always shown on the session itself — look for the "why" line.</p>
+<section class="bone">
+  <div class="wrap">
+    <h2>Most plans are a PDF written for somebody else</h2>
+    <p class="lede">Usually a 22-year-old with a full gym and a season that starts when yours doesn't. This one is built from your own answers instead.</p>
 
-<p><strong>Is this medical or physiotherapy advice?</strong><br>
-No. Footy Ready gives general fitness guidance, not medical advice, and is not physiotherapy or rehabilitation. If something is more than mild soreness, see a health professional.</p>
+    <div class="features">
+      <div>
+        <div class="rule"></div>
+        <h3>Built around you, not a generic squad</h3>
+        <p>Your code, your age, your training history, your injuries, your equipment and the days you can actually train. Enter your round 1 date and the plan is periodised backwards from it and forwards through finals.</p>
+      </div>
+      <div>
+        <div class="rule"></div>
+        <h3>A check-in that changes today</h3>
+        <p>Thirty seconds on sleep, energy, soreness, stress and mood. Today's session goes lighter, shorter, or ahead as planned, and the reason sits on the session itself, including on the days nothing changes.</p>
+      </div>
+      <div>
+        <div class="rule"></div>
+        <h3>Every phase of the year</h3>
+        <p>Off-season, pre-season, in-season, finals and the reset after them. Six phases generated from your real dates rather than a calendar that assumes everyone starts in November.</p>
+      </div>
+      <div>
+        <div class="rule"></div>
+        <h3>No gym, no problem</h3>
+        <p>Full programs for a garage, a park or a loaded barbell. If your equipment tier is "not much", the running and bodyweight work carries the session rather than quietly assuming a rack you haven't got.</p>
+      </div>
+      <div>
+        <div class="rule"></div>
+        <h3>Built for who's actually playing</h3>
+        <p>Conservative, age-appropriate caps apply automatically to under-18 athletes and lift the moment you turn 18. Masters and veteran players get a plan biased towards recovery and staying on the field.</p>
+      </div>
+      <div>
+        <div class="rule"></div>
+        <h3>Nothing you can't safely do</h3>
+        <p>While an area is flagged as sore, its work leaves your plan rather than being trained around, and any exercise ruled out by an injury or by your age never appears on any screen.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p><strong>How do I send you my data if something looks wrong?</strong><br>
-Open Settings → Export your data → Prepare your data export, then share the file straight to Mail. That sends your profile, season dates, check-ins and logged sessions as one JSON file — nothing is sent unless you do this yourself.</p>
+<section class="olive">
+  <div class="wrap split reverse">
+    <figure class="shot">
+      <img src="img/shot-checkin.png" alt="The daily readiness check-in in Footy Ready, asking about sleep, energy, soreness, stress and mood.">
+    </figure>
+    <div>
+      <h2>Try it on your own season, free</h2>
+      <p class="lede">Not a preview. The full assessment, your whole season across all six phases, one real session generated from your own answers and fully playable, and one real check-in applied to it. No trial clock.</p>
+      <p class="lede">That's your actual Week 1, Day 1, and a check-in that really changes it.</p>
+      <p class="note">Every session after that one is part of the subscription, which carries a free trial and a yearly option. The App Store shows the current price. Every session you have logged stays readable whether you're subscribed or not.</p>
+    </div>
+  </div>
+</section>
 
-<p><strong>How do I cancel or check my subscription?</strong><br>
-Subscriptions are managed entirely through Apple, not the app. On your iPhone: Settings → your name → Subscriptions.</p>
+<section class="bone">
+  <div class="wrap split">
+    <figure class="shot">
+      <img src="img/shot-season.png" alt="A season built in Footy Ready, listing the off-season build, two pre-season blocks, the in-season phase and a finals taper, each with its own dates.">
+    </figure>
+    <div>
+      <h2>Your training, your device</h2>
+      <p>No account, no sign-in and no server of the developer's. Your assessment, your check-ins and every session you log stay on your phone unless you turn on the optional iCloud backup yourself. That is off by default, and it copies them to your own private iCloud so they come back if you lose the phone.</p>
+      <p>Footy Ready never sees your training either way, and there is no analytics or advertising SDK in the app.</p>
+      <p class="note"><a href="privacy.html">Read the privacy policy</a></p>
+    </div>
+  </div>
+</section>
 
-<p><strong>I resubscribed or changed devices and it's not showing up.</strong><br>
-Open the paywall screen in Footy Ready and tap <strong>Restore Purchases</strong>. This restores any active subscription tied to your Apple ID.</p>
+<section class="olive" id="coaches">
+  <div class="wrap">
+    <h2>For coaches and clubs</h2>
+    <p class="lede">If you look after a playing group, there's a one-page poster for the sheds or the team chat: what the app does, what it costs, and a code to scan.</p>
+    <p><a class="cta" href="club-poster.pdf">Download the poster (PDF)</a></p>
+    <p class="note">Apple has announced squad-sized group purchases, where one buyer covers many seats. There's no per-seat price yet and there won't be a made-up one here. To hear when it lands, or to talk about a group, email <a href="mailto:mattsappdevelopment@gmail.com">mattsappdevelopment@gmail.com</a>. The developer reads it, because there is nobody else to.</p>
+  </div>
+</section>
 
-<p><strong>Can I get a refund?</strong><br>
-Refunds are handled entirely by Apple, not the developer. Request one at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+<section class="bone centre">
+  <div class="wrap">
+    <h2>Round 1 is a date, not a surprise</h2>
+    <p class="lede">Build your season in about five minutes, and play your first session today.</p>
+    <p><a class="cta" href="https://apps.apple.com/au/app/footy-ready-training-plan/id6807821197?ct=website">Get it on the App Store</a></p>
+  </div>
+</section>
 
 <footer>
-  Footy Ready · <a href="privacy.html">Privacy Policy</a>
+  <div class="wrap">
+    <p class="links">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
+      <a href="mailto:mattsappdevelopment@gmail.com">Email</a>
+    </p>
+    <p>Footy Ready gives general fitness guidance, not medical advice, and is not physiotherapy or rehabilitation. See a health professional about anything more than mild soreness.</p>
+    <p>Footy Ready is an independent training app for amateur Aussie rules, rugby league, rugby union and soccer players. It is not affiliated with, endorsed by or connected to any league or governing body.</p>
+    <p>&copy; 2026 Matthew Edwards</p>
+  </div>
 </footer>
 
 </body>
