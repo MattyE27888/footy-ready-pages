@@ -240,3 +240,34 @@ footer p { max-width: 48em; }
   .bar nav { font-size: 15px; }
   .bar nav a { margin-left: 13px; }
 }
+
+/* ---------------------------------------------------------------------------
+   The guide hub. Cards carry no dates, because the set is finite and complete:
+   a date implies a cadence nobody has committed to, and it is the first thing
+   to look stale.
+   --------------------------------------------------------------------------- */
+
+.cards { display: grid; gap: 0; margin: 34px 0 0; }
+.cards a {
+  display: block; text-decoration: none;
+  padding: 24px 0; border-top: 1px solid var(--hairline);
+}
+.cards a:last-child { border-bottom: 1px solid var(--hairline); }
+.cards h3 {
+  font-family: var(--head); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(19px, 2.4vw, 23px); line-height: 1.05;
+  color: var(--field); margin: 0 0 8px;
+}
+.cards p { margin: 0; font-size: 16px; line-height: 1.5; color: var(--ink-soft); max-width: 38em; }
+
+/* A highlight lifted from the carousel it was written for. One or two a page:
+   more and the page is shouting rather than making a point. */
+.doc .pull {
+  font-family: var(--head); font-weight: 800;
+  font-size: clamp(20px, 2.6vw, 26px); line-height: 1.15;
+  color: var(--field); text-transform: none;
+  max-width: 22em; margin: 30px 0;
+  padding-left: 18px; border-left: 6px solid var(--tint);
+}
+
+.doc .backlink { margin-top: 40px; font-size: 16px; }

@@ -7,6 +7,9 @@ The Footy Ready website, served by GitHub Pages at
 |---|---|---|
 | `index.html` | The landing page | Social bios, the club poster's QR code, anyone sent the link |
 | `how-it-works.html` | How the plan is built: the method in full | The objection the product has to beat |
+| `guides.html` | The guide hub | Anyone arriving from search |
+| six guide pages | Generated, listed in `make-guides.py` | Search, and the hub |
+| `make-guides.py` | **The source of truth for the hub and all six guides** | Edit this, never the HTML |
 | `support.html` | The support FAQ | **App Store Connect's Support URL field** |
 | `privacy.html` | The privacy policy | **App Store Connect's Privacy Policy URL field** |
 | `site.css` | Every page's styles, shared | All of them |
@@ -91,15 +94,44 @@ Bigger only helps if each page has its own reason to exist, so these were consid
   reviews to cite. Invented review markup is a manual-action offence.
 - **A pricing page.** Same reason as everywhere else here: the App Store renders the price.
 
-What is queued instead is a **finite guide library**: six guides reworked from
-`Marketing/instagram/carousels.md` (C1, C2, C3, C4, C8, C9), which are the entries with genuine
-external search intent. Nine of the twelve carousels there were never rendered, so those words
-have never been published anywhere indexable. C5, C6, C7, C11 and C12 are product explanation
-rather than guides, and they went into `how-it-works.html` instead of becoming five thin pages.
+What was built instead is a **finite guide library**, shipped 17 September 2026: six guides
+reworked from `Marketing/instagram/carousels.md` (C1, C2, C3, C4, C8, C9), which are the entries
+with genuine external search intent. Nine of the twelve carousels there were never rendered, so
+those words had never been published anywhere indexable. C5, C6, C7, C11 and C12 are product
+explanation rather than guides, and they went into `how-it-works.html` instead of becoming five
+thin pages. C10 became the "one pre-season, four codes" section on the hub.
 
 **It ships complete and it is not a blog.** No feed, no dates on the cards, no "latest", nothing
 that implies a cadence nobody has committed to. A finite set of six does not go stale. A blog with
-three posts and a four-month gap does.
+three posts and a four-month gap does. (`datePublished` is in each guide's `Article` JSON-LD,
+because that field is honest and machine-facing. Nothing on the page shows a date.)
+
+## `make-guides.py`
+
+**Edit the script, never the HTML it writes.** Six guides sharing a shell means six copies of the
+same header, nav, footer and JSON-LD to keep in step by hand, which is the problem the inline CSS
+had before it became `site.css`. The copy lives in the `GUIDES` list; `python3 make-guides.py`
+rewrites the seven pages and `sitemap.xml`.
+
+Three rules bind the copy, and the script's own docstring repeats them:
+
+- **Each guide is as long as its material and no longer.** A carousel slide is about 150 words;
+  expanding one into 800 is exactly how padded machine-written prose happens, and padding undoes
+  the credibility the citations buy. The six currently run 441 to 748 words and that spread is
+  correct, not an inconsistency to even out.
+- **Every number names its study, its population and its caveat**, taken from `stat-bank.md` rather
+  than paraphrased. A figure not in that bank does not go on a page. The guides print the awkward
+  parts on purpose: that the acute-to-chronic workload ratio has been criticised on statistical
+  grounds, that the Gabbe community-football data is from 1999, and that the widely quoted
+  detraining percentage is omitted because it is not in either abstract.
+- **Code-neutral by default.** The brand kit lets social rotate code examples across a month. Six
+  guides published in one go cannot rotate, so they name a code only when a cited study measured
+  one, and say so when they do.
+
+**Check every PubMed ID before publishing.** A draft of the first guide carried a plausible but
+wrong ID for Windt et al., written from memory instead of read off the bank; the bank says
+27075963. All eight IDs on the site were then checked against the eutils summary endpoint, author,
+journal and year. `stat-bank.md`'s header has the command.
 
 ## Where the design comes from
 
