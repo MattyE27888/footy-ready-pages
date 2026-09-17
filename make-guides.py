@@ -165,7 +165,7 @@ GUIDES.append(dict(
         ("pull", "Boring first. Sharp later."),
 
         ("h2", ("lift", "Lift twice a week, from the first week")),
-        ("p", "Two lifting sessions a week, every week, beats four sessions at the start and none by the time the season arrives. The consistency is the point, not the session design. Two thirty-minute sessions you actually do outperform an ambitious four-day split you abandon."),
+        ("p", 'Two lifting sessions a week, every week, beats four sessions at the start and none by the time the season arrives. The consistency is the point, not the session design. Two thirty-minute sessions you actually do outperform an ambitious four-day split you abandon. Nor does any of it need a gym: <a href="pre-season-training-without-a-gym.html">the swaps that hold up</a> cover every pattern without one.'),
         ("cite", "The evidence for strength work is the strongest in this area. Across 25 randomised trials and 26,610 participants, strength training programs cut sports injuries to under a third of the rate in the control groups. Stretching programs, measured the same way in the same review, changed nothing at all. Lauersen JB, Bertelsen DM, Andersen LB. The effectiveness of exercise interventions to prevent sports injuries. <em>Br J Sports Med.</em> 2014;48(11):871-877. <a href=\"https://pubmed.ncbi.nlm.nih.gov/24100287/\">PubMed 24100287</a>. The authors say plainly that the overall effect estimate was heterogeneous, and the figure is \"to under a third\", not \"by a third\", which is a different and much-repeated claim."),
 
         ("h2", ("turn-up", "Turning up beats going hard")),
@@ -179,7 +179,7 @@ GUIDES.append(dict(
             "<strong>Weeks 5 to 8.</strong> Add one harder run a week. Keep the easy running easy so the hard day can be hard.",
             "<strong>Weeks 9 onward.</strong> Sprints, changes of direction, and the total volume starts coming down as the quality goes up.",
         ]),
-        ("p", "Add one thing at a time, so that when something goes well or goes wrong you know which change did it. Two new stressors in the same week tell you nothing."),
+        ("p", 'Add one thing at a time, so that when something goes well or goes wrong you know which change did it. Two new stressors in the same week tell you nothing. How many weeks you get for all of it is <a href="counting-back-from-round-1.html">arithmetic from round 1</a>.'),
 
         ("h2", ("wrong", "Where most people go wrong")),
         ("p", "They start at week 9. Sprints and hard running in the first week back feel like progress in a way that easy running never does, and that is why the first fortnight of a pre-season is where the soft-tissue injuries live."),
@@ -202,7 +202,7 @@ GUIDES.append(dict(
     blurb="The jump from a quiet month to a full week is the risky part, not the fitness you lost. What the load research says, including the half of it that usually gets left off.",
     description="Coming back after the off-season: why the jump from a quiet month to a full training week is the risk, and how to ramp back in without it.",
     blocks=[
-        ("lede", "The season ends, you take a proper break, and then club training resumes and you go from almost nothing to four hard sessions in a week because everybody else is. That week is the one to be careful with, and not for the reason most people assume."),
+        ("lede", 'The season ends, you take <a href="the-weeks-where-doing-nothing-is-the-plan.html">a proper break</a>, and then club training resumes and you go from almost nothing to four hard sessions in a week because everybody else is. That week is the one to be careful with, and not for the reason most people assume.'),
 
         ("h2", ("jump", "The jump is the problem, not the fitness you lost")),
         ("p", "It is tempting to read the first hard week back as punishment for the month off. It isn't. The issue is the size of the step between this week and the last month, rather than the absolute amount of work in it."),
@@ -215,7 +215,7 @@ GUIDES.append(dict(
         ("h2", ("what", "So what do you actually do")),
         ("ul", [
             "<strong>Come back before club training does</strong>, by about a fortnight, so the first hard week is not also your first week.",
-            "<strong>Add roughly one session a week, not three.</strong> If you finished the break on nothing, two sessions is a full week.",
+            '<strong>Add roughly one session a week, not three.</strong> If you finished the break on nothing, two sessions is a full week. <a href="what-a-pre-season-week-looks-like.html">A full pre-season week</a> is four.',
             "<strong>Keep the easy running easy.</strong> Most people ramp back by making every session moderately hard, which raises the whole week at once and leaves nowhere to go.",
         ]),
         ("p", "None of that is dramatic, and none of it will feel like enough at the time. Ramping in properly costs you a fortnight of feeling underdone and buys you the first month of the season."),
@@ -290,7 +290,7 @@ GUIDES.append(dict(
 
         ("h2", ("club", "Club nights are training")),
         ("p", "Once club pre-season resumes, a club night is a hard session whether or not it appears on your own plan. Two club nights and a match is most of a week already, and a plan that adds four sessions on top of it is not a plan, it is a wish."),
-        ("p", "Count what the club takes before you add anything. This is the single most common way a good individual program turns into an injury: it was written for the week you had in November and never revised for the week you have in March."),
+        ("p", 'Count what the club takes before you add anything. This is the single most common way a good individual program turns into an injury: it was written for the week you had in November and never revised for the week you have in March. The size of the step is what the load research points at, not the size of the week, and <a href="coming-back-after-the-off-season.html">the week after the quiet month</a> is the same problem at the other end of the year.'),
 
         ("h2", ("time", "Thirty minutes is a session")),
         ("p", "Not a compromise, not a maintenance dose. A session. Most of what a football pre-season needs fits into half an hour, provided the half hour is not spent on the parts that do not matter."),
@@ -328,6 +328,7 @@ GUIDES.append(dict(
             "<strong>In-season.</strong> Maintenance, anchored to match day.",
             "<strong>Finals taper.</strong> If you get there.",
         ]),
+        ("p", 'Two of those have a guide of their own: <a href="the-weeks-where-doing-nothing-is-the-plan.html">the post-season reset</a>, and <a href="where-a-pre-season-starts.html">where the off-season build starts</a>.'),
 
         ("h2", ("changes", "What changes in each")),
         ("p", "Off-season builds the engine. Pre-season 1 builds strength and running volume on top of it. Pre-season 2 turns that into speed while the total volume comes down, because club training is rising at the same time and the two have to add up to something survivable."),
@@ -369,7 +370,7 @@ GUIDES.append(dict(
         ("pull", "Take the break on purpose and you won't need one later."),
 
         ("h2", ("then", "Then it starts")),
-        ("p", "When the reset ends, the off-season block begins with easy running and two lifts a week. Not because it is a gentle way back in, but because it is the base that everything after it is built on."),
+        ("p", 'When the reset ends, the off-season block begins with easy running and two lifts a week. Not because it is a gentle way back in, but because it is the base that everything after it is built on. <a href="where-a-pre-season-starts.html">Where a pre-season actually starts</a> is that block in full.'),
 
         ("plan", [
             "Post-season reset is a phase like any other, with its own dates, and it is the only phase in the app that tells you not to train hard. It ends when the calendar says it ends rather than when you feel ready, which is the point of putting it on a calendar.",
