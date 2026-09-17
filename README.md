@@ -186,9 +186,8 @@ to cite; invented review markup is a manual-action offence.
 `<meta name="apple-itunes-app">` puts Safari's native install banner at the top of the page on an
 iPhone, which is where the conversions are.
 
-**Verify the site in Google Search Console and submit the sitemap** when the domain is settled.
-That is what gets a new domain indexed in days rather than weeks, and it is the step that gets
-skipped.
+**The site is verified in Google Search Console and `sitemap.xml` is submitted**, done
+17 September 2026 as a Domain property. See "Search Console" below.
 
 ## The custom domain
 
@@ -263,10 +262,34 @@ Each forwarder is a 301 with **Wildcard redirect** and **Retain source path** on
    version-level field and cannot be changed while a version is live.
 3. Instagram and Facebook profile links.
 4. Rebuild the club poster so its QR code points at the site rather than at the App Store.
-5. **Verify in Google Search Console and submit `sitemap.xml`**, which lists eleven URLs. This is
-   the step that gets skipped and it is what gets a new domain indexed in days rather than weeks.
-6. Add TikTok, Facebook and YouTube to `sameAs` in `index.html`'s JSON-LD once those URLs are
+5. Add TikTok, Facebook and YouTube to `sameAs` in `index.html`'s JSON-LD once those URLs are
    certain. A wrong URL there works against the entity matching it exists to help.
+
+### Search Console. Done 17 September 2026
+
+Verified as a **Domain property**, which covers the apex, `www`, http and https in one. A
+URL-prefix property would have needed a second property for `www`. Verification is a
+`google-site-verification` TXT record on the apex at VentraIP: in their DNS editor the Hostname
+field appends `.footyreadyapp.com.au` on its own, so the root record is entered with **Hostname
+left blank**, not `@`. `sitemap.xml` was submitted as a **full URL**, because a Domain property
+has no prefix to append a relative path to. It read Success and eleven discovered pages the same
+day. **Leave the TXT record in place**; Google re-checks it and un-verifies the property if it
+goes.
+
+**The first VERIFY press failed on a record that was already correct, and the fix was to wait.**
+Creating the property makes Google look for the token before it exists, and that empty answer is
+cached for the zone's negative TTL, the last field of the SOA, which is 3600 here. The failure
+reads as a wrong or truncated value, so the instinct is to change the DNS, and every such change
+is wasted: it cannot flush Google's cache. Ignore the error dialog's own suggestion to add a
+different TXT record, which only leaves a second dead token in the zone. Confirm the record once
+against the nameservers rather than a local resolver, `dig +short @ns1.nameserver.net.au
+footyreadyapp.com.au TXT`, then change nothing and press VERIFY again later.
+
+Two things that mislead while waiting. The dialog's value field **truncates the token visually**,
+so use its COPY button rather than reading it off the screen; a real Google token is 43 characters
+after the `=`. And **sampling `8.8.8.8` does not predict the verifier**: it is anycast, different
+instances expire the cached answer at different times, and verification succeeded at a moment when
+that resolver was returning the record on only 5 of 12 queries.
 
 ### The original checklist, kept for the next domain change
 
@@ -285,4 +308,5 @@ Each forwarder is a 301 with **Wildcard redirect** and **Retain source path** on
 6. Rebuild the club poster so its QR code points at the new domain rather than at the App Store.
 7. Verify the site in Google Search Console and submit `sitemap.xml`, which now lists eleven URLs.
    This is the step that gets skipped and it is what gets a new domain indexed in days rather than
-   weeks.
+   weeks. Expect the first VERIFY press to fail on a correct record and read "Search Console"
+   above before touching the DNS.
