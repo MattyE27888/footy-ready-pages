@@ -454,7 +454,7 @@ def build_hub():
   ]
 }}"""
     return page("guides.html", "Guides: Footy Ready",
-                "Six guides on building a football pre-season: where to start, coming back after the off-season, training without a gym, what a week looks like, counting back from round 1, and the post-season break.",
+                "Six guides on building a football pre-season: where to start, coming back after the off-season, training without a gym, and counting back from round 1.",
                 body, jsonld, og_type="website")
 
 
