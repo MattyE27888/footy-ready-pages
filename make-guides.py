@@ -62,7 +62,7 @@ FOOTER = """<footer>
 </footer>"""
 
 
-def page(slug, title, description, body, jsonld=""):
+def page(slug, title, description, body, jsonld="", og_type="article"):
     ld = f'\n<script type="application/ld+json">\n{jsonld}\n</script>' if jsonld else ""
     return f"""<!DOCTYPE html>
 <html lang="en-AU">
@@ -73,6 +73,12 @@ def page(slug, title, description, body, jsonld=""):
 <meta name="description" content="{html.escape(description, quote=True)}">
 <link rel="canonical" href="{BASE}/{slug}">
 <meta name="apple-itunes-app" content="app-id=6807821197">
+<meta property="og:type" content="{og_type}">
+<meta property="og:title" content="{html.escape(title, quote=True)}">
+<meta property="og:description" content="{html.escape(description, quote=True)}">
+<meta property="og:image" content="{BASE}/img/og.png">
+<meta property="og:url" content="{BASE}/{slug}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/icon.png">
 <link rel="stylesheet" href="site.css">{ld}
@@ -449,7 +455,7 @@ def build_hub():
 }}"""
     return page("guides.html", "Guides: Footy Ready",
                 "Six guides on building a football pre-season: where to start, coming back after the off-season, training without a gym, what a week looks like, counting back from round 1, and the post-season break.",
-                body, jsonld)
+                body, jsonld, og_type="website")
 
 
 def build_sitemap():
