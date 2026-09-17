@@ -52,6 +52,8 @@ FOOTER = """<footer>
       <a href="privacy.html">Privacy</a>
       <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
       <a href="mailto:mattsappdevelopment@gmail.com">Email</a>
+      <a href="https://www.instagram.com/footyreadyapp/">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61594351435169">Facebook</a>
     </p>
     <p>Footy Ready gives general fitness guidance, not medical advice, and is not physiotherapy or rehabilitation. See a health professional about anything more than mild soreness.</p>
     <p>Footy Ready is an independent training app for amateur Aussie rules, rugby league, rugby union and soccer players. It is not affiliated with, endorsed by or connected to any league or governing body.</p>
