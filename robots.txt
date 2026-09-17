@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mattye27888.github.io/footy-ready-pages/sitemap.xml
+Sitemap: https://footyreadyapp.com.au/sitemap.xml

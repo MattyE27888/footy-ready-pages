@@ -190,21 +190,60 @@ iPhone, which is where the conversions are.
 That is what gets a new domain indexed in days rather than weeks, and it is the step that gets
 skipped.
 
-## Moving to a custom domain
+## The custom domain
 
-`footyreadyapp.com.au` was free as of 16 September 2026. When it is registered:
+Three domains were registered at VentraIP on 17 September 2026: **`footyreadyapp.com.au`**,
+`footyreadyapp.com` and `footyreadyapp.site`.
 
-1. Add a file called `CNAME` at the repo root containing `footyreadyapp.com.au` and nothing else.
-   **Do not add it before the DNS exists**, or Pages stops serving the github.io address and starts
-   serving nothing.
-2. At the registrar, point the apex at GitHub's Pages addresses and add a `CNAME` record for `www`
-   pointing at `mattye27888.github.io`.
-3. In the repo's Settings, Pages, set the custom domain and tick Enforce HTTPS once the certificate
-   is issued.
-4. Update the absolute URLs in `index.html`: `og:url`, `og:image`, `canonical` and the four inside
-   the JSON-LD block, plus `robots.txt` and `sitemap.xml`. Grep for `mattye27888.github.io` to find
-   the lot.
-5. Update the Support and Privacy URLs in App Store Connect, the Instagram and Facebook profile
-   links, and rebuild the club poster so its QR code points at the new domain.
+**`footyreadyapp.com.au` is canonical.** GitHub Pages serves one custom domain per repository,
+because the `CNAME` file holds exactly one name, so the other two redirect to it and are not
+served from here. The `.com.au` was chosen because the audience is Australian amateur footballers,
+"footy" is an Australianism, and the App Store listing is on the AU storefront. It is reversible:
+the `.com` is held, so if the app ever goes beyond Australia the canonical can move to it.
 
-The old github.io address keeps redirecting, so nothing already printed or posted breaks.
+Every absolute URL in the repo was swapped from `mattye27888.github.io/footy-ready-pages` on
+17 September 2026, which is 68 occurrences across 15 files, and the path segment went with it
+because the new domain serves from its root. **`make-guides.py`'s `BASE` is the source of truth
+for the eleven canonical tags, the JSON-LD and `sitemap.xml`**; change it there and re-run, never
+in the generated HTML. `robots.txt` and the four hand-written pages carry their own copy.
+
+The old `mattye27888.github.io` address keeps redirecting once the custom domain is set, so the
+club poster and anything already posted still work.
+
+### DNS, which is Matthew's to enter
+
+At VentraIP, for `footyreadyapp.com.au`:
+
+| Type | Host | Value |
+|---|---|---|
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `mattye27888.github.io.` |
+
+Those four apex addresses were read off GitHub's own documentation on 17 September 2026, not from
+memory. AAAA records on `2606:50c0:800{0,1,2,3}::153` are optional and can be added later.
+
+For `footyreadyapp.com` and `footyreadyapp.site`, use VentraIP's free web forwarding to
+`https://footyreadyapp.com.au`, set to a permanent (301) redirect. **Check that the forwarder
+serves HTTPS.** Registrar URL forwarding is often HTTP-only, which means `https://footyreadyapp.com`
+would fail with a certificate warning rather than redirect. If VentraIP's does not do HTTPS, put
+the `.com` behind Cloudflare's free tier and use a redirect rule there instead.
+
+### Then, in order
+
+1. Wait for the DNS to resolve. `dig +short footyreadyapp.com.au` should return the four addresses.
+2. **Only then push the `CNAME` file.** Pushing it before the DNS exists stops Pages serving the
+   github.io address and starts it serving nothing. The file is committed but held back for
+   exactly this reason.
+3. Repo Settings, Pages, set the custom domain, then tick Enforce HTTPS once the certificate is
+   issued. It can take a few minutes.
+4. Update the **Privacy Policy URL** in App Store Connect. The Support URL is a version-level
+   field and cannot be changed while the version is live; repoint it at `support.html` as part of
+   the next version.
+5. Update the Instagram and Facebook profile links.
+6. Rebuild the club poster so its QR code points at the new domain rather than at the App Store.
+7. Verify the site in Google Search Console and submit `sitemap.xml`, which now lists eleven URLs.
+   This is the step that gets skipped and it is what gets a new domain indexed in days rather than
+   weeks.

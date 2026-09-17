@@ -27,7 +27,7 @@ The rules the copy is written under, which the README states in full:
 import html
 import os
 
-BASE = "https://mattye27888.github.io/footy-ready-pages"
+BASE = "https://footyreadyapp.com.au"
 APP = "https://apps.apple.com/au/app/footy-ready-training-plan/id6807821197"
 PUBLISHED = "2026-09-17"
 
