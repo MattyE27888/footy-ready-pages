@@ -257,13 +257,22 @@ Each forwarder is a 301 with **Wildcard redirect** and **Retain source path** on
 
 ### Still to do
 
-1. **Privacy Policy URL** in App Store Connect, to `https://footyreadyapp.com.au/privacy.html`.
-2. **Support URL** with the next version, to `https://footyreadyapp.com.au/support.html`. It is a
-   version-level field and cannot be changed while a version is live.
-3. Instagram and Facebook profile links.
-4. Rebuild the club poster so its QR code points at the site rather than at the App Store.
-5. Add TikTok, Facebook and YouTube to `sameAs` in `index.html`'s JSON-LD once those URLs are
-   certain. A wrong URL there works against the entity matching it exists to help.
+1. **Privacy Policy URL and Support URL together, with the next version**, to
+   `https://footyreadyapp.com.au/privacy.html` and `.../support.html`. **Both are locked while a
+   version is live**, not just the Support URL. Matthew hit this on 17 September 2026: "I cant
+   change the privacy without the new app version". An earlier note here claimed the Privacy
+   Policy URL was App Information level and editable in place; it is not. Promotional text is the
+   only listing field that can be changed without a new version.
+2. **The profile links, which is the reverse of what the footer now does.** The site points out
+   at the accounts as of `cd9434d`; this is pointing the accounts back, by setting the website
+   field in the Instagram and Facebook bios to `footyreadyapp.com.au` rather than the old
+   github.io address. The Facebook page appeared to have no website field filled at all. Worth
+   doing because those two are close to the only inbound links the domain has.
+3. Rebuild the club poster so its QR code points at the site rather than at the App Store.
+4. Add TikTok and YouTube to `sameAs` if they are ever confirmed. Facebook went in with
+   `cd9434d`. **TikTok exists and was deliberately left out**, on Matthew's call to lead with
+   Instagram, so it is not an oversight to correct without asking. A wrong URL in `sameAs` works
+   against the entity matching it exists to help.
 
 ### Search Console. Done 17 September 2026
 
@@ -301,9 +310,9 @@ that resolver was returning the record on only 5 of 12 queries.
    exactly this reason.
 3. Repo Settings, Pages, set the custom domain, then tick Enforce HTTPS once the certificate is
    issued. It can take a few minutes.
-4. Update the **Privacy Policy URL** in App Store Connect. The Support URL is a version-level
-   field and cannot be changed while the version is live; repoint it at `support.html` as part of
-   the next version.
+4. Repoint the **Privacy Policy URL and the Support URL** in App Store Connect. Both are locked
+   while a version is live, so both ride with the next version. Do not plan a metadata-only trip
+   for either.
 5. Update the Instagram and Facebook profile links.
 6. Rebuild the club poster so its QR code points at the new domain rather than at the App Store.
 7. Verify the site in Google Search Console and submit `sitemap.xml`, which now lists eleven URLs.
