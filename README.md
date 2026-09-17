@@ -231,6 +231,45 @@ serves HTTPS.** Registrar URL forwarding is often HTTP-only, which means `https:
 would fail with a certificate warning rather than redirect. If VentraIP's does not do HTTPS, put
 the `.com` behind Cloudflare's free tier and use a redirect rule there instead.
 
+### Done, 17 September 2026
+
+The move is complete and verified. Every entry point lands on `https://footyreadyapp.com.au`:
+the apex, `www`, both other domains, and the old `mattye27888.github.io` address, which keeps
+redirecting so the club poster and anything already posted still work.
+
+Certificates: `footyreadyapp.com.au` is Let's Encrypt via GitHub Pages, and the two forwarded
+domains carry their own ZeroSSL certificates issued by VentraIP. **Enforce HTTPS is ticked** in
+Settings, Pages, so `http://` is 301'd rather than served, which is what was showing "Not Secure"
+in the address bar before it was turned on. Serving plain HTTP was the default until that box was
+ticked, so it is worth checking after any future domain change.
+
+Two things about the forwarded domains, learned here rather than assumed:
+
+- **VentraIP's forwarding does serve HTTPS.** The concern recorded above was that registrar URL
+  forwarding is often HTTP-only. It is not, in this case.
+- **The certificates are not issued at the same time.** `.site` had one within a couple of minutes
+  and `.com` took closer to fifteen, which looked like a configuration difference and was not one.
+  A forwarded domain failing TLS handshake shortly after setup is worth waiting out before
+  changing anything.
+
+Each forwarder is a 301 with **Wildcard redirect** and **Retain source path** on, so
+`footyreadyapp.com/guides.html` reaches the matching page rather than the homepage, and
+`www.footyreadyapp.com` redirects as well as the bare domain.
+
+### Still to do
+
+1. **Privacy Policy URL** in App Store Connect, to `https://footyreadyapp.com.au/privacy.html`.
+2. **Support URL** with the next version, to `https://footyreadyapp.com.au/support.html`. It is a
+   version-level field and cannot be changed while a version is live.
+3. Instagram and Facebook profile links.
+4. Rebuild the club poster so its QR code points at the site rather than at the App Store.
+5. **Verify in Google Search Console and submit `sitemap.xml`**, which lists eleven URLs. This is
+   the step that gets skipped and it is what gets a new domain indexed in days rather than weeks.
+6. Add TikTok, Facebook and YouTube to `sameAs` in `index.html`'s JSON-LD once those URLs are
+   certain. A wrong URL there works against the entity matching it exists to help.
+
+### The original checklist, kept for the next domain change
+
 ### Then, in order
 
 1. Wait for the DNS to resolve. `dig +short footyreadyapp.com.au` should return the four addresses.
