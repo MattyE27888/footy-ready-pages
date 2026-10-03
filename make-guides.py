@@ -258,7 +258,7 @@ GUIDES.append(dict(
         ("p", "Where it does honestly run out is heavy lower-body strength. There is a point at which split squats with a backpack stop being a strength stimulus and become a conditioning one, and no amount of programming hides that. If you get there, you have had a very good year, and a pair of adjustable dumbbells is the cheapest fix there is."),
 
         ("plan", [
-            "There are four equipment tiers, from a full gym down to bodyweight and a park, and 120 exercises in the library that substitute across them. You pick your tier once during the assessment and the plan is built inside it, so the running and bodyweight work carries the session rather than quietly assuming a rack you haven't got.",
+            "There are four equipment tiers, from a full gym down to bodyweight and a park, and more than 120 exercises in the library that substitute across them. You pick your tier once during the assessment and the plan is built inside it, so the running and bodyweight work carries the session rather than quietly assuming a rack you haven't got.",
             "Any single exercise can also be swapped on the day, and the replacements are filtered through the same eligibility rules as the original, so a swap can never hand you something your injuries or your age rule out.",
         ]),
     ],
