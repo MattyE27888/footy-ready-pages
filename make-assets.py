@@ -1,6 +1,6 @@
 """Rebuild the page's images from the App Store assets.
 
-Writes the three device crops in img/ and img/og.png, the 1200x630 link-preview card.
+Writes the four device crops in img/ and img/og.png, the 1200x630 link-preview card.
 
 Palette and type come from Marketing/BRAND-KIT.md: olive ground, one accent
 (chartreuse), Inter Tight Black for the headline, Inter for everything else.
@@ -23,7 +23,8 @@ SHOTS = APP / "AppStoreAssets/screenshots/6.5"
 # its top moves, so that is measured rather than hard-coded.
 CROPS = [("02-know-why", "shot-why"),
          ("03-check-in", "shot-checkin"),
-         ("01-season-built", "shot-season")]
+         ("01-season-built", "shot-season"),
+         ("08-your-week", "shot-week")]
 
 
 def crop_devices():

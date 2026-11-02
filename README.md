@@ -106,6 +106,16 @@ that implies a cadence nobody has committed to. A finite set of six does not go 
 three posts and a four-month gap does. (`datePublished` is in each guide's `Article` JSON-LD,
 because that field is honest and machine-facing. Nothing on the page shows a date.)
 
+## The "New in 1.6" section
+
+Added 2 November 2026 on the `release-1.6` branch, held back until 1.6 was approved, because pushing
+publishes the site. It sits between the four codes and the feature grid, with the week editor crop
+(`img/shot-week.png`, from `08-your-week.png`). It is not the changelog ruled out above: the six
+items are described as what the app does, and only the eyebrow names the version. **Take the
+eyebrow off when 1.7 ships** rather than adding a 1.7 section beside it. Every claim in it, and in
+the five support answers added with it, comes from `AppStoreAssets/whats-new-1.6.md` with the
+on-screen labels checked against the source; the same "Deliberately not claimed" list applies.
+
 ## `make-guides.py`
 
 **Edit the script, never the HTML it writes.** Six guides sharing a shell means six copies of the

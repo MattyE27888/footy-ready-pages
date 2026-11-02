@@ -143,6 +143,17 @@ a { color: inherit; }
 }
 .split .shot img { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; }
 
+/* What a version adds, beside its device shot. Two columns once the copy column
+   of a split is wide enough for them, so six items do not stretch the section
+   to twice the height of the shot. The eyebrow names the version and comes off
+   when the next one ships. */
+.news { display: grid; gap: 26px; margin: 0 0 30px; }
+#new .split { margin-top: 40px; }
+.news p { margin: 0; font-size: 16px; line-height: 1.55; }
+.news h3 { font-size: 19px; margin-bottom: 8px; text-wrap: balance; }
+.news .rule { width: 44px; height: 4px; background: var(--chartreuse); margin-bottom: 12px; }
+#new .eyebrow { margin-bottom: 16px; }
+
 .centre { text-align: center; }
 .centre .lede { margin-left: auto; margin-right: auto; }
 
@@ -168,6 +179,11 @@ footer p { max-width: 48em; }
   .features .lead { grid-column: 1 / -1; }
   .split { grid-template-columns: 0.85fr 1.15fr; gap: 56px; }
   .split.reverse .shot { order: 2; }
+}
+
+@media (min-width: 960px) {
+  #new .split { grid-template-columns: 0.7fr 1.3fr; }
+  .news { grid-template-columns: 1fr 1fr; gap: 30px 34px; }
 }
 
 /* ---------------------------------------------------------------------------
